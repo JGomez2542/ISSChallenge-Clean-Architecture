@@ -2,7 +2,6 @@ package com.example.jasongomez.isschallenge.presentation.passes
 
 import android.annotation.SuppressLint
 import android.location.Location
-import android.util.Log
 import com.example.jasongomez.isschallenge.domain.common.CURRENT_LOCATION
 import com.example.jasongomez.isschallenge.domain.usecases.GetLocation
 import com.example.jasongomez.isschallenge.domain.usecases.GetPasses
@@ -30,9 +29,7 @@ class PassesPresenter(
             .map { passEntityPassMapper.mapFrom(it) }
             .toList()
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                passesContractView.displayPasses(it)
-            }, { it?.printStackTrace() })
+            .subscribe({ passesContractView.displayPasses(it) }, { it.printStackTrace() })
     }
 
     override fun onStop() {
