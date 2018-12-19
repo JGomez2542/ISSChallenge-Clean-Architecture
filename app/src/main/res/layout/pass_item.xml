@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="wrap_content">
+
+    <TextView
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Material.Subhead"
+            android:id="@+id/tvRiseTime"
+            android:textStyle="bold"
+            android:text="text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvDuration"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textAlignment="center"
+            android:text="text"
+            android:textAppearance="@android:style/TextAppearance.Material.Title"
+            android:textStyle="bold"
+            android:id="@+id/tvDuration"
+            app:layout_constraintBottom_toTopOf="@+id/tvRiseTime" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"/>
+</android.support.constraint.ConstraintLayout>

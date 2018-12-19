@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ISSChallenge</string>
+    <string name="duration">Duration: %s seconds</string>
+    <string name="risetime">Time: %s</string>
+</resources>
