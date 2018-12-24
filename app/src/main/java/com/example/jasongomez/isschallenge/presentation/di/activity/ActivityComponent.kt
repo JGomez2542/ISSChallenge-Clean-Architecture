@@ -2,6 +2,7 @@ package com.example.jasongomez.isschallenge.presentation.di.activity
 
 import android.location.Location
 import com.example.jasongomez.isschallenge.domain.common.AsyncTransformer
+import com.example.jasongomez.isschallenge.domain.usecases.GetPermissions
 import com.example.jasongomez.isschallenge.domain.common.SyncTransformer
 import com.example.jasongomez.isschallenge.domain.entities.PassEntity
 import com.example.jasongomez.isschallenge.domain.usecases.GetLocation
@@ -22,4 +23,6 @@ interface ActivityComponent {
     fun getPassesUseCase(): GetPasses
 
     fun getLocationUseCase(): GetLocation
+
+    fun getPermissionsUseCase(): GetPermissions
 }

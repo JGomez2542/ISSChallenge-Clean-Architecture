@@ -6,7 +6,7 @@ import com.example.jasongomez.isschallenge.presentation.entities.Pass
 
 interface PassesContract {
     interface Presenter: BasePresenter {
-
+        fun getPasses()
     }
     interface View: BaseView {
         fun displayPasses(passes: List<Pass>)

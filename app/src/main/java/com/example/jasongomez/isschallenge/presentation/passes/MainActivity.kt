@@ -1,10 +1,12 @@
 package com.example.jasongomez.isschallenge.presentation.passes
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.example.jasongomez.isschallenge.AppController
 import com.example.jasongomez.isschallenge.R
+import com.example.jasongomez.isschallenge.domain.common.PERMISSIONS_REQUEST_CODE
 import com.example.jasongomez.isschallenge.presentation.adapters.PassAdapter
 import com.example.jasongomez.isschallenge.presentation.base.BaseActivity
 import com.example.jasongomez.isschallenge.presentation.di.activity.ActivityModule
@@ -33,6 +35,16 @@ class MainActivity : BaseActivity<PassesContract.Presenter>(), PassesContract.Vi
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = PassAdapter(passes)
             addItemDecoration(DividerItemDecoration(context, (layoutManager as LinearLayoutManager).orientation))
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            PERMISSIONS_REQUEST_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    passesPresenter.getPasses()
+                }
+            }
         }
     }
 }
