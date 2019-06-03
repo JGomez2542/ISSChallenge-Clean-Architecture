@@ -12,16 +12,6 @@ abstract class BaseActivity<T : BasePresenter> : AppCompatActivity(), BaseView {
         init()
     }
 
-    override fun onStart() {
-        super.onStart()
-        getPresenter().onStart()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        getPresenter().onStop()
-    }
-
     override fun showMessage(message: String) {
         showDialog(message, "Message")
     }

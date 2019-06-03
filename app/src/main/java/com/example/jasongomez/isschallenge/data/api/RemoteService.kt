@@ -7,5 +7,5 @@ import retrofit2.http.Query
 interface RemoteService {
 
     @GET("iss-pass.json")
-    fun getPasses(@Query("lat") latitiude: String, @Query("lon") longitude: String): Single<ISSResult>
+    fun getPasses(@Query("lat") latitude: String, @Query("lon") longitude: String): Single<ISSResult>
 }

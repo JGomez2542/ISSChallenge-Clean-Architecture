@@ -1,7 +1,7 @@
 package com.example.jasongomez.isschallenge.presentation.di.activity
 
-import android.app.Activity
 import android.content.Context
+import android.support.v7.app.AppCompatActivity
 import com.example.jasongomez.isschallenge.domain.CurrentLocation
 import com.example.jasongomez.isschallenge.domain.abstractions.LocationProvider
 import com.example.jasongomez.isschallenge.domain.usecases.GetPermissions
@@ -18,8 +18,9 @@ class ActivityModule(private val passView: PassesContract.View) {
 
     @Provides
     @ActivityScope
-    fun providesPassesPresenter(getLocation: GetLocation, getPasses: GetPasses,
-                                passEntityPassMapper: PassEntityPassMapper, getPermissions: GetPermissions
+    fun providesPassesPresenter(
+        getLocation: GetLocation, getPasses: GetPasses,
+        passEntityPassMapper: PassEntityPassMapper, getPermissions: GetPermissions
     ): PassesContract.Presenter = PassesPresenter(
         passView,
         getLocation = getLocation,
@@ -30,7 +31,7 @@ class ActivityModule(private val passView: PassesContract.View) {
 
     @Provides
     @ActivityScope
-    fun providesActivity(): Activity = (passView as Activity)
+    fun providesActivity(): AppCompatActivity = (passView as AppCompatActivity)
 
     @Provides
     @ActivityScope

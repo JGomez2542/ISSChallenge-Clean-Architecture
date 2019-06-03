@@ -14,7 +14,7 @@ class RepositoryImpl(
 
     override fun getPasses(latitude: String, longitude: String): Single<List<PassEntity>> {
         return remoteServiceHelper.getPasses(latitude, longitude).toFlowable()
-            .flatMap {it -> Flowable.fromIterable(it.passData)}
+            .flatMap { Flowable.fromIterable(it.passData)}
             .map{passDataEntityMapper.mapFrom(it)}
             .toList()
     }

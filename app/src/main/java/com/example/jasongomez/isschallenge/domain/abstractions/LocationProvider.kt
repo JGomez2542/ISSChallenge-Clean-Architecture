@@ -5,4 +5,5 @@ import io.reactivex.Observable
 
 interface LocationProvider {
     fun getLocation(): Observable<Location>
+    fun removeListener()
 }

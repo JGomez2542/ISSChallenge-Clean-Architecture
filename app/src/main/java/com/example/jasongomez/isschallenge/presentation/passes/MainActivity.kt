@@ -4,6 +4,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import com.example.jasongomez.isschallenge.AppController
 import com.example.jasongomez.isschallenge.R
 import com.example.jasongomez.isschallenge.domain.common.PERMISSIONS_REQUEST_CODE
@@ -21,6 +22,7 @@ class MainActivity : BaseActivity<PassesContract.Presenter>(), PassesContract.Vi
 
     override fun init() {
         (application as AppController).applicationComponent.newActivityComponent(ActivityModule(this)).inject(this)
+        lifecycle.addObserver(passesPresenter)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +44,7 @@ class MainActivity : BaseActivity<PassesContract.Presenter>(), PassesContract.Vi
         when (requestCode) {
             PERMISSIONS_REQUEST_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(this::class.java.simpleName, "onPermissionResult")
                     passesPresenter.getPasses()
                 }
             }
