@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.example.jasongomez.isschallenge.AppController
 import com.example.jasongomez.isschallenge.R
-import com.example.jasongomez.isschallenge.domain.common.PERMISSIONS_REQUEST_CODE
+import com.example.domain.common.PERMISSIONS_REQUEST_CODE
 import com.example.jasongomez.isschallenge.presentation.adapters.PassAdapter
 import com.example.jasongomez.isschallenge.presentation.base.BaseActivity
 import com.example.jasongomez.isschallenge.presentation.di.activity.ActivityModule
@@ -42,7 +42,7 @@ class MainActivity : BaseActivity<PassesContract.Presenter>(), PassesContract.Vi
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         when (requestCode) {
-            PERMISSIONS_REQUEST_CODE -> {
+            com.example.domain.common.PERMISSIONS_REQUEST_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.d(this::class.java.simpleName, "onPermissionResult")
                     passesPresenter.getPasses()

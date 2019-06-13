@@ -1,7 +1,6 @@
 package com.example.jasongomez.isschallenge.data.api
 
-import com.example.jasongomez.isschallenge.domain.common.BASE_URL
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.example.domain.common.BASE_URL
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -26,7 +25,7 @@ class RemoteServiceHelper @Inject constructor() {
             .build()
 
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(com.example.domain.common.BASE_URL)
             .client(okHttpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())

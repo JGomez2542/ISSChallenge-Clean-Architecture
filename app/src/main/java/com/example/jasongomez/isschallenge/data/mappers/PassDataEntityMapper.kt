@@ -1,12 +1,12 @@
 package com.example.jasongomez.isschallenge.data.mappers
 
 import com.example.jasongomez.isschallenge.data.entities.PassData
-import com.example.jasongomez.isschallenge.domain.common.Mapper
-import com.example.jasongomez.isschallenge.domain.entities.PassEntity
+import com.example.domain.common.Mapper
+import com.example.domain.entities.PassEntity
 import javax.inject.Inject
 
-class PassDataEntityMapper @Inject constructor() : Mapper<PassData, PassEntity>() {
+class PassDataEntityMapper @Inject constructor() : com.example.domain.common.Mapper<PassData, com.example.domain.entities.PassEntity>() {
 
-    override fun mapFrom(from: PassData): PassEntity =
-        PassEntity(riseTime = from.risetime, duration = from.duration)
+    override fun mapFrom(from: PassData): com.example.domain.entities.PassEntity =
+        com.example.domain.entities.PassEntity(riseTime = from.risetime, duration = from.duration)
 }

@@ -1,7 +1,7 @@
 package com.example.jasongomez.isschallenge.presentation.mappers
 
-import com.example.jasongomez.isschallenge.domain.common.Mapper
-import com.example.jasongomez.isschallenge.domain.entities.PassEntity
+import com.example.domain.common.Mapper
+import com.example.domain.entities.PassEntity
 import com.example.jasongomez.isschallenge.presentation.entities.Pass
 import javax.inject.Inject
 

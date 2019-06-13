@@ -15,4 +15,5 @@ interface ApplicationComponent {
     fun getRemoteServiceHelper(): RemoteServiceHelper
 
     fun getPassDataEntityMapper(): PassDataEntityMapper
+
 }

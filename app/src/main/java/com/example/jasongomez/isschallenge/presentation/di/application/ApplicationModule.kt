@@ -4,7 +4,7 @@ import android.content.Context
 import com.example.jasongomez.isschallenge.data.api.RemoteServiceHelper
 import com.example.jasongomez.isschallenge.data.mappers.PassDataEntityMapper
 import com.example.jasongomez.isschallenge.data.repositories.RepositoryImpl
-import com.example.jasongomez.isschallenge.domain.abstractions.Repository
+import com.example.domain.abstractions.Repository
 import dagger.Module
 import dagger.Provides
 
