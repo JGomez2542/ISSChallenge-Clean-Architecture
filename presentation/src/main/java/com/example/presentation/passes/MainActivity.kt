@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.example.AppController
@@ -69,6 +70,20 @@ class MainActivity : BaseActivity<PassesContract.Presenter>(),
             adapter = PassAdapter(passes)
             addItemDecoration(DividerItemDecoration(context, (layoutManager as LinearLayoutManager).orientation))
         }
+    }
+
+    override fun showMessage(message: String) {
+        AlertDialog.Builder(this)
+            .setTitle("Message")
+            .setMessage(message)
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.cancel()
+                ActivityCompat.requestPermissions(
+                    this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                    PERMISSIONS_REQUEST_CODE
+                )
+            }
+            .show()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
