@@ -1,6 +1,6 @@
 package com.example.presentation.mappers
 
-import com.example.domain.common.Mapper
+import com.example.core.common.Mapper
 import com.example.domain.entities.PassEntity
 import com.example.presentation.entities.Pass
 import javax.inject.Inject

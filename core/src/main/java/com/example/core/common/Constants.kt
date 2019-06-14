@@ -1,4 +1,4 @@
-package com.example.domain.common
+package com.example.core.common
 
 const val BASE_URL = "http://api.open-notify.org/"
 const val DATABASE_VERSION = 1

@@ -34,6 +34,7 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":domain")
+    implementation project(":core")
 
     //Gson
     implementation 'com.google.code.gson:gson:2.8.5'

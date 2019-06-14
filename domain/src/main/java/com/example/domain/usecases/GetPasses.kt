@@ -1,8 +1,8 @@
 package com.example.domain.usecases
 
+import com.example.core.common.AsyncTransformer
+import com.example.core.common.CURRENT_LOCATION
 import com.example.domain.abstractions.Repository
-import com.example.domain.common.AsyncTransformer
-import com.example.domain.common.CURRENT_LOCATION
 import com.example.domain.entities.LocationEntity
 import com.example.domain.entities.PassEntity
 import io.reactivex.Observable

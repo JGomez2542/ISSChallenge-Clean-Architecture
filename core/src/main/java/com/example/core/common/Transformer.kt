@@ -1,4 +1,4 @@
-package com.example.domain.common
+package com.example.core.common
 
 import io.reactivex.ObservableTransformer
 

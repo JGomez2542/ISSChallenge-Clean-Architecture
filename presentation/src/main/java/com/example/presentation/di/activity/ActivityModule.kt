@@ -2,13 +2,11 @@ package com.example.presentation.di.activity
 
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
+import com.example.core.common.AsyncTransformer
+import com.example.core.common.SyncTransformer
 import com.example.devices.location.CurrentLocation
-import com.example.devices.permissions.CheckPermissions
 import com.example.domain.abstractions.LocationProvider
-import com.example.domain.abstractions.PermissionsManager
 import com.example.domain.abstractions.Repository
-import com.example.domain.common.AsyncTransformer
-import com.example.domain.common.SyncTransformer
 import com.example.domain.entities.LocationEntity
 import com.example.domain.entities.PassEntity
 import com.example.domain.usecases.GetLocation
@@ -26,18 +24,13 @@ class ActivityModule(private val passView: PassesContract.View) {
     @ActivityScope
     fun providesPassesPresenter(
         getLocation: GetLocation, getPasses: GetPasses,
-        passEntityPassMapper: PassEntityPassMapper, permissionsManager: PermissionsManager
+        passEntityPassMapper: PassEntityPassMapper
     ): PassesContract.Presenter = PassesPresenter(
         passView,
         getLocation = getLocation,
         getPasses = getPasses,
-        passEntityPassMapper = passEntityPassMapper,
-        permissions = permissionsManager
+        passEntityPassMapper = passEntityPassMapper
     )
-
-    @Provides
-    @ActivityScope
-    fun providesPermissionsManager(activity: AppCompatActivity): PermissionsManager = CheckPermissions(activity)
 
     @Provides
     @ActivityScope

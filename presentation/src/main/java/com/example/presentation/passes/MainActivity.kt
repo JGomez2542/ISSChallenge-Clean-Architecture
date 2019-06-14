@@ -1,11 +1,14 @@
 package com.example.presentation.passes
 
+import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.example.AppController
-import com.example.domain.common.PERMISSIONS_REQUEST_CODE
+import com.example.core.common.PERMISSIONS_REQUEST_CODE
 import com.example.presentation.R
 import com.example.presentation.adapters.PassAdapter
 import com.example.presentation.base.BaseActivity
@@ -35,6 +38,30 @@ class MainActivity : BaseActivity<PassesContract.Presenter>(),
     }
 
     override fun getPresenter(): PassesContract.Presenter = passesPresenter
+
+    override fun checkPermissions(): Boolean {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                )
+            ) {
+                showMessage("Your location is needed in order to get the international space station pass times")
+            } else {
+                ActivityCompat.requestPermissions(
+                    this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                    PERMISSIONS_REQUEST_CODE
+                )
+            }
+            return false
+        } else {
+            return true
+        }
+    }
 
     override fun displayPasses(passes: List<Pass>) {
         rvPasses.apply {

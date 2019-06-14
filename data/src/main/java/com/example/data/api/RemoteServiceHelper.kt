@@ -1,6 +1,6 @@
 package com.example.data.api
 
-import com.example.domain.common.BASE_URL
+import com.example.core.common.BASE_URL
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,7 +13,7 @@ class RemoteServiceHelper @Inject constructor() {
 
     fun getPasses(latitude: String, longitude: String): Single<ISSResult> {
         val retrofit = getRetrofit()
-        val service = retrofit.create(com.example.data.api.RemoteService::class.java)
+        val service = retrofit.create(RemoteService::class.java)
         return service.getPasses(latitude, longitude)
     }
 

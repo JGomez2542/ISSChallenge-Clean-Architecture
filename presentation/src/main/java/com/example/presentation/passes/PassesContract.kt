@@ -6,10 +6,11 @@ import com.example.presentation.base.BaseView
 import com.example.presentation.entities.Pass
 
 interface PassesContract {
-    interface Presenter: com.example.presentation.base.BasePresenter, LifecycleObserver {
+    interface Presenter: BasePresenter, LifecycleObserver {
         fun getPasses()
     }
-    interface View: com.example.presentation.base.BaseView {
-        fun displayPasses(passes: List<com.example.presentation.entities.Pass>)
+    interface View: BaseView {
+        fun displayPasses(passes: List<Pass>)
+        fun checkPermissions():Boolean
     }
 }
