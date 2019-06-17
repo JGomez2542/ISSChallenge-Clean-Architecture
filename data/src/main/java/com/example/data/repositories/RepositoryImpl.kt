@@ -12,10 +12,9 @@ class RepositoryImpl(
     private val passDataEntityMapper: PassDataEntityMapper
 ) : Repository {
 
-    override fun getPasses(latitude: String, longitude: String): Single<List<PassEntity>> {
-        return remoteServiceHelper.getPasses(latitude, longitude).toFlowable()
-            .flatMap { Flowable.fromIterable(it.passData)}
-            .map{passDataEntityMapper.mapFrom(it)}
+    override fun getPasses(latitude: String, longitude: String): Single<List<PassEntity>> =
+        remoteServiceHelper.getPasses(latitude, longitude).toFlowable()
+            .flatMap { Flowable.fromIterable(it.passData) }
+            .map { passDataEntityMapper.mapFrom(it) }
             .toList()
-    }
 }

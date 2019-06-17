@@ -9,7 +9,6 @@ import com.example.domain.usecases.GetPasses
 import com.example.presentation.mappers.PassEntityPassMapper
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class PassesPresenter(
     private val passesContractView: PassesContract.View,
@@ -29,7 +28,6 @@ class PassesPresenter(
     @SuppressLint("CheckResult")
     override fun getPasses() {
         getLocation.observable()
-            .observeOn(Schedulers.io())
             .flatMap { getPasses.observable(mapOf(CURRENT_LOCATION to it)) }
             .flatMap { Observable.fromIterable(it) }
             .map { passEntityPassMapper.mapFrom(it) }
