@@ -1,6 +1,6 @@
 package com.example.presentation.adapters
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.pass_item.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class PassAdapter(private val passes: List<Pass>) : RecyclerView.Adapter<PassAdapter.ViewHolder>() {
+class PassAdapter(private val passes: List<Pass>) : androidx.recyclerview.widget.RecyclerView.Adapter<PassAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, res: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.pass_item, viewGroup, false)
@@ -25,7 +25,7 @@ class PassAdapter(private val passes: List<Pass>) : RecyclerView.Adapter<PassAda
         holder.bind(riseTime = tempPass.riseTime, duration = tempPass.duration)
     }
 
-    class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    class ViewHolder(override val containerView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(containerView), LayoutContainer {
 
         fun bind(riseTime: String, duration: String) {
             val resources = containerView.resources

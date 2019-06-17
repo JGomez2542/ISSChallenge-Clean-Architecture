@@ -1,11 +1,13 @@
 package com.example.presentation
 
+import androidx.appcompat.app.AppCompatActivity
 import com.example.domain.entities.LocationEntity
 import com.example.domain.entities.PassEntity
 import com.example.domain.usecases.GetLocation
 import com.example.domain.usecases.GetPasses
 import com.example.presentation.entities.Pass
 import com.example.presentation.mappers.PassEntityPassMapper
+import com.example.presentation.passes.MainActivity
 import com.example.presentation.passes.PassesContract
 import com.example.presentation.passes.PassesPresenter
 import com.nhaarman.mockitokotlin2.KArgumentCaptor
@@ -17,16 +19,13 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.InjectMocks
-import org.mockito.Mock
 import org.mockito.Mockito.verify
-import org.mockito.Spy
-import org.mockito.junit.MockitoJUnitRunner
-import org.mockito4kotlin.annotation.KCaptor
-import org.mockito4kotlin.annotation.MockAnnotations
+import org.mockito4kotlin.annotation.*
+import org.robolectric.Robolectric
+import org.robolectric.RobolectricTestRunner
 import org.mockito.Mockito.`when` as whenever
 
-@RunWith(MockitoJUnitRunner::class)
+@RunWith(RobolectricTestRunner::class)
 class PassesPresenterTest {
 
     @Mock
@@ -42,15 +41,14 @@ class PassesPresenterTest {
     private lateinit var passListCaptor: KArgumentCaptor<List<Pass>>
 
     @Spy
-    private val passEntityPassMapper: PassEntityPassMapper = PassEntityPassMapper()
-
-    @InjectMocks
+    private var passEntityPassMapper: PassEntityPassMapper = PassEntityPassMapper()
     private lateinit var passesPresenter: PassesPresenter
     private lateinit var passListEntities: List<PassEntity>
 
     @Before
     fun setUp() {
         MockAnnotations.initMocks(this)
+        passesPresenter = PassesPresenter(passesContractView, getLocation, getPasses, passEntityPassMapper)
         passListEntities = listOf(
             PassEntity("10", "10"),
             PassEntity("11", "11"),
@@ -66,5 +64,27 @@ class PassesPresenterTest {
         passesPresenter.getPasses()
         verify(passesContractView).displayPasses(passListCaptor.capture())
         assertEquals(3, passListCaptor.firstValue.size)
+    }
+
+    @Test
+    fun shouldFireOnStart() {
+        //Grab the activity controller
+        val controller = Robolectric.buildActivity(MainActivity::class.java).create().start()
+        val activity: AppCompatActivity = controller.get()
+
+        activity.lifecycle.addObserver(passesPresenter)
+        controller.stop()
+        verify(passesContractView).checkPermissions()
+    }
+
+    @Test
+    fun shouldFireOnStop() {
+        //Grab the activity controller
+        val controller = Robolectric.buildActivity(MainActivity::class.java).create().start()
+        val activity: AppCompatActivity = controller.get()
+
+        activity.lifecycle.addObserver(passesPresenter)
+        controller.stop()
+        verify(getLocation).removeListener()
     }
 }

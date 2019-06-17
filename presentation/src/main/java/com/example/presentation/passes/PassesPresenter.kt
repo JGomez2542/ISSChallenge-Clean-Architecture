@@ -1,8 +1,8 @@
 package com.example.presentation.passes
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.OnLifecycleEvent
 import com.example.core.common.CURRENT_LOCATION
 import com.example.domain.usecases.GetLocation
 import com.example.domain.usecases.GetPasses

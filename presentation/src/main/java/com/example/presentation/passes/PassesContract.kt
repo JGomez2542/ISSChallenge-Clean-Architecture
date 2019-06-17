@@ -1,6 +1,6 @@
 package com.example.presentation.passes
 
-import android.arch.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleObserver
 import com.example.presentation.base.BasePresenter
 import com.example.presentation.base.BaseView
 import com.example.presentation.entities.Pass

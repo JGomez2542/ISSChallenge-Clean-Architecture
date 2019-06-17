@@ -1,6 +1,6 @@
 package com.example.data.db
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import com.example.data.entities.RequestData
 
 @Dao

@@ -3,11 +3,11 @@ package com.example.presentation.passes
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AlertDialog
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.AppController
 import com.example.core.common.PERMISSIONS_REQUEST_CODE
 import com.example.presentation.R
@@ -68,7 +68,12 @@ class MainActivity : BaseActivity<PassesContract.Presenter>(),
         rvPasses.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = PassAdapter(passes)
-            addItemDecoration(DividerItemDecoration(context, (layoutManager as LinearLayoutManager).orientation))
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    (layoutManager as LinearLayoutManager).orientation
+                )
+            )
         }
     }
 

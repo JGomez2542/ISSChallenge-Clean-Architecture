@@ -1,7 +1,7 @@
 package com.example.presentation.di.activity
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.core.common.AsyncTransformer
 import com.example.core.common.SyncTransformer
 import com.example.devices.location.CurrentLocation
